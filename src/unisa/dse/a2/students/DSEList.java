@@ -87,11 +87,26 @@ public class DSEList implements List {
 	public boolean add(String obj) 
 	{
 		Node newNode = new Node(null, tail, obj);
+		
+		if (head == null)
+		{
+			head = newNode;
+			tail = newNode;
+		}
+		else 
+		{
+			tail.next = newNode;
+			newNode.prev = tail;
+			tail = newNode;
+		}
+		size++;
+		return true;
 	}
 
 	//add String at parameter's index
 	public boolean add(int index, String obj) 
 	{
+		return false;
 		
 	}
 
