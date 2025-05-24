@@ -131,10 +131,10 @@ public class DSEList implements List {
 			{
 				
 				current = current.next;
-				Node newNode = new Node(current,current.prev,obj);				
-				current.next.prev = newNode;
-				current.prev = newNode;
 			}
+			Node newNode = new Node(current,current.prev,obj);				
+			current.next.prev = newNode;
+			current.prev = newNode;
 		}
 		size++;
 		return true;
