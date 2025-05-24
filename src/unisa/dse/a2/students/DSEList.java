@@ -41,7 +41,6 @@ public class DSEList implements List {
 			
 			this.add(current_data);
 			current = current.next;
-			
 		}
 		
 	}
@@ -106,7 +105,27 @@ public class DSEList implements List {
 	//add String at parameter's index
 	public boolean add(int index, String obj) 
 	{
-		return false;
+		if (index < 0 || index > size)
+		{
+			return false;			
+		}
+		else if (index == 0)
+		{
+			
+			Node newNode = new Node(head, null, obj);
+			head.prev = newNode;
+			head = newNode;
+		}
+		else if (index == size)
+		{
+			Node newNode = new Node(null, tail, obj);
+			
+			tail.next = newNode;
+			newNode.prev = tail;
+			tail = newNode;
+		}
+		size++;
+		return true;
 		
 	}
 
