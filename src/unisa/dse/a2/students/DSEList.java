@@ -124,6 +124,18 @@ public class DSEList implements List {
 			newNode.prev = tail;
 			tail = newNode;
 		}
+		else
+		{
+			Node current = head;
+			for (int i = 0;i < index;i++)
+			{
+				
+				current = current.next;
+				Node newNode = new Node(current,current.prev,obj);				
+				current.next.prev = newNode;
+				current.prev = newNode;
+			}
+		}
 		size++;
 		return true;
 		
