@@ -81,6 +81,7 @@ public class DSEList implements List {
 	}
 	
 	//Take each element of the list a writes them to a string 
+	
 	@Override
 	public String toString() 
 	{
@@ -88,7 +89,7 @@ public class DSEList implements List {
 		String result = "";
 		while (current !=  null)
 		{
-			result += current.toString();
+			result += current.getString();
 			if (current.next != null)
 			{
 				result += " ";
@@ -185,7 +186,9 @@ public class DSEList implements List {
 	public static void main(String[] args) {
 		DSEList list1 = new DSEList();
 		list1.add("a");
-		System.out.println(list1);
+		list1.add("b");
+		list1.add("c");
+		System.out.println(list1.toString());
 	}
 	
 }
