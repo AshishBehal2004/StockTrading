@@ -88,11 +88,14 @@ public class DSEList implements List {
 		String result = "";
 		while (current !=  null)
 		{
-			current = current.next;
 			result += current.toString();
-			
+			if (current.next != null)
+			{
+				result += " ";
+			}
+			current = current.next;
 		}
-		return newString;
+		return result;
 		
 	}
 
