@@ -48,18 +48,20 @@ public class DSEList implements List {
 	//remove the String at the parameter's index
 	public String remove(int index) 
 	{
-
+		return "";
 	}
 
 	//returns the index of the String parameter 
 	public int indexOf(String obj) 
 	{
+		return 0;
 		
 	}
 	
 	//returns String at parameter's index
 	public String get(int index) 
 	{
+		return "";
 		
 	}
 
@@ -67,11 +69,14 @@ public class DSEList implements List {
 	public boolean isEmpty() 
 	{
 		
+		return false;
+		
 	}
 
 	//return the size of the list
 	public int size() 
 	{
+		return 0;
 		
 	}
 	
@@ -79,6 +84,15 @@ public class DSEList implements List {
 	@Override
 	public String toString() 
 	{
+		Node current = head;
+		String result = "";
+		while (current !=  null)
+		{
+			current = current.next;
+			result += current.toString();
+			
+		}
+		return newString;
 		
 	}
 
@@ -129,7 +143,6 @@ public class DSEList implements List {
 			Node current = head;
 			for (int i = 0;i < index;i++)
 			{
-				
 				current = current.next;
 			}
 			Node newNode = new Node(current,current.prev,obj);				
@@ -144,13 +157,14 @@ public class DSEList implements List {
 	//searches list for parameter's String return true if found
 	public boolean contains(String obj) 
 	{
+		return false;
 		
 	}
 
 	//removes the parameter's String form the list
 	public boolean remove(String obj) 
 	{
-		
+		return true;
 	}
 	
 	@Override
@@ -163,6 +177,12 @@ public class DSEList implements List {
 	public boolean equals(Object other)
 	{
 		return true;
+	}
+	
+	public static void main(String[] args) {
+		DSEList list1 = new DSEList();
+		list1.add("a");
+		System.out.println(list1);
 	}
 	
 }
