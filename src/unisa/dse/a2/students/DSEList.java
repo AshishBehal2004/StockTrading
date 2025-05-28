@@ -76,7 +76,14 @@ public class DSEList implements List {
 	//return the size of the list
 	public int size() 
 	{
-		return 0;
+		int count = 0;
+		Node current = head;
+		while(current != null)
+		{
+			count++;
+			current =current.next;
+		}
+		return count;
 		
 	}
 	
@@ -161,6 +168,12 @@ public class DSEList implements List {
 	//searches list for parameter's String return true if found
 	public boolean contains(String obj) 
 	{
+		Node current = head;
+		
+		for (int i = 0;i < index;i++)
+		{
+			current = current.next;
+		}
 		return false;
 		
 	}
