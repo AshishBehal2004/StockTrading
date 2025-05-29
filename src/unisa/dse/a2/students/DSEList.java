@@ -68,9 +68,12 @@ public class DSEList implements List {
 	//checks if there is a list
 	public boolean isEmpty() 
 	{
-		
+		Node current = head;
+		if (current == null)
+		{
+			return true;
+		}
 		return false;
-		
 	}
 
 	//return the size of the list
