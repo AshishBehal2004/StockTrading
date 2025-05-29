@@ -78,6 +78,7 @@ public class DSEList implements List {
 	{
 		int count = 0;
 		Node current = head;
+		
 		while(current != null)
 		{
 			count++;
@@ -169,10 +170,14 @@ public class DSEList implements List {
 	public boolean contains(String obj) 
 	{
 		Node current = head;
-		
-		for (int i = 0;i < index;i++)
+		while(current != null)
 		{
+			if (current.getString().equals(obj))
+			{
+				return true;
+			}
 			current = current.next;
+			
 		}
 		return false;
 		
@@ -181,6 +186,19 @@ public class DSEList implements List {
 	//removes the parameter's String form the list
 	public boolean remove(String obj) 
 	{
+		Node current = head;
+		while(current != null)
+		{
+			if (current.getString().equals(obj))
+			{
+				if (current == head)
+				{
+					head = current.next;
+					current.prev = null;
+				}
+			}
+			current = current.next;
+		}
 		return true;
 	}
 	
@@ -195,7 +213,7 @@ public class DSEList implements List {
 	{
 		return true;
 	}
-	
+	S
 	public static void main(String[] args) {
 		DSEList list1 = new DSEList();
 		list1.add("a");
