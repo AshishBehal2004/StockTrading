@@ -236,16 +236,16 @@ public class DSEList implements List {
 		}
 		while(current != null)
 		{
-			if (current.getString().equals(other_node.getString()))
+			if (!current.getString().equals(other_node.getString()))
+			{
+				
+				return false;
+			}
+			else	
 			{
 				current = current.next;
 				other_node = other_node.next;
 				
-			}
-			else if (!current.getString().equals(other_node.getString()))
-			{
-				
-				return false;
 			}
 		}
 		return true;
