@@ -71,7 +71,16 @@ public class DSEList implements List {
 		}
 		else
 		{
-			
+			while (current != null)
+			{
+				current = current.next;
+				nodeTrack++;
+				if (nodeTrack == index)
+				{
+					nodeData = current.getString();
+				}
+			}
+			return nodeData;
 		}
 		
 	}
