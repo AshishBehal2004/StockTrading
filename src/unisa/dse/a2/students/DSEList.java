@@ -227,9 +227,21 @@ public class DSEList implements List {
 	@Override
 	public boolean equals(Object other)
 	{
+		DSEList list = (DSEList) other;
+		Node current = head;
+		Node other_node = list.head;
+		if (this.size != list.size)
+		{
+			return false;
+		}
+		while(current != null)
+		{
+			current = current.next;
+			other_node = other_node.next;
+		}
 		return true;
 	}
-	S
+	
 	public static void main(String[] args) {
 		DSEList list1 = new DSEList();
 		list1.add("a");
