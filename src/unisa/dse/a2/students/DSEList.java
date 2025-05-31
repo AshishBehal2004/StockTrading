@@ -236,8 +236,17 @@ public class DSEList implements List {
 		}
 		while(current != null)
 		{
-			current = current.next;
-			other_node = other_node.next;
+			if (current.getString().equals(other_node.getString()))
+			{
+				current = current.next;
+				other_node = other_node.next;
+				
+			}
+			else if (!current.getString().equals(other_node.getString()))
+			{
+				
+				return false;
+			}
 		}
 		return true;
 	}
