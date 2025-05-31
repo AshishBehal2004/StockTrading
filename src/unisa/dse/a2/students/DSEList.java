@@ -61,7 +61,18 @@ public class DSEList implements List {
 	//returns String at parameter's index
 	public String get(int index) 
 	{
-		return "";
+		Node current = head;
+		String nodeData = "";
+		int nodeTrack = 0;
+
+		if (index < 0 || index >= size)
+		{
+			return "cannot found the string";
+		}
+		else
+		{
+			
+		}
 		
 	}
 
