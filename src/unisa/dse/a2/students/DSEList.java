@@ -53,26 +53,35 @@ public class DSEList implements List {
 		String remove_string = "";
 		while(current != null)
 		{
-			remove_string = current.getString();
 			if (index < 0 || index > size)
 			{
 				return "not a valid index";			
 			}
-			else if (index == 0)
+			else if (index == nodeTrack)
 			{
-				head = current.next;
-				head.prev = null;
+				remove_string = current.getString();
+				if (current == head)
+				{
+					head = current.next;
+					head.prev = null;	
+				}
+				
+				
+				else if (index == size -1 )
+				{
+					tail = tail.prev;
+					tail.next = null;
+				}
+				else 
+				{
+					current.prev.next = current.next;
+					current.next.prev = current.prev;
+				}
+				size--;
+				return remove_string;
 			}
-			else if (index == size -1 )
-			{
-				tail = tail.prev;
-				tail.next = null;
-			}
-			else 
-			{
-				current.prev.next = current.next;
-				current.next.prev = current.prev;
-			}
+			current = current.next;
+			nodeTrack++;
 		}
 		return remove_string;
 	}
@@ -257,9 +266,9 @@ public class DSEList implements List {
 					current.next.prev = current.prev;
 					
 				}
+				size--;
 			}
 			current = current.next;
-			size--;
 		}
 		return true;
 	}
