@@ -57,16 +57,22 @@ public class DSEList implements List {
 			{
 				return "not a valid index";			
 			}
-			if (index == 0)
+			else if (index == 0)
 			{
 				head = current.next;
 				head.prev = null;
 			}
-			if (index == size)
+			else if (index == size -1 )
 			{
-				tail.prev = tail.prev.prev;
+				tail = tail.prev;
+				tail.next = null;
 			}
-			
+			else 
+			{
+				current.prev.next = current.next;
+				current.next.prev = current.prev;
+			}
+
 		}
 		return "";
 	}
