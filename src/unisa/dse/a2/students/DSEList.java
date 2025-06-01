@@ -121,12 +121,12 @@ public class DSEList implements List {
 		{
 			while (current != null)
 			{
-				current = current.next;
-				nodeTrack++;
 				if (nodeTrack == index)
 				{
 					nodeData = current.getString();
 				}
+				current = current.next;
+				nodeTrack++;
 			}
 			return nodeData;
 		}
@@ -324,6 +324,7 @@ public class DSEList implements List {
 		list1.add("a");
 		list1.add("b");
 		list1.add("c");
+
 		System.out.println(list1.toString());
 	}
 	
