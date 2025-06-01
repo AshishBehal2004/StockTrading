@@ -50,9 +50,10 @@ public class DSEList implements List {
 	{
 		Node current = head;
 		int nodeTrack = 0;
-		
+		String remove_string = "";
 		while(current != null)
 		{
+			remove_string = current.getString();
 			if (index < 0 || index > size)
 			{
 				return "not a valid index";			
@@ -72,9 +73,8 @@ public class DSEList implements List {
 				current.prev.next = current.next;
 				current.next.prev = current.prev;
 			}
-
 		}
-		return "";
+		return remove_string;
 	}
 
 	//returns the index of the String parameter 
