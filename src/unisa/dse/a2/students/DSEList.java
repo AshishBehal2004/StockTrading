@@ -319,13 +319,13 @@ public class DSEList implements List {
 		return true;
 	}
 	
-	public static void main(String[] args) {
-		DSEList list1 = new DSEList();
-		list1.add("a");
-		list1.add("b");
-		list1.add("c");
-
-		System.out.println(list1.toString());
-	}
+//	public static void main(String[] args) {
+//		DSEList list1 = new DSEList();
+//		list1.add("a");
+//		list1.add("b");
+//		list1.add("c");
+//
+//		System.out.println(list1.toString());
+//	}
 	
 }

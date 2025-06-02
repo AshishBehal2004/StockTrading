@@ -6,7 +6,7 @@ import unisa.dse.a2.interfaces.ListGeneric;
  * @author simont
  *
  */
-public class DSEListGeneric implements ListGeneric {
+public class DSEListGeneric<T> implements ListGeneric {
 	
 	public NodeGeneric head;
 	private NodeGeneric tail;
@@ -22,12 +22,12 @@ public class DSEListGeneric implements ListGeneric {
 	}
 
 	//remove and return the item at the parameter's index
-	public void remove(int index) {
+	public T remove(int index) {
 
 	}
 
 	//returns the index of the String parameter 
-	public int indexOf(String obj) {
+	public int indexOf(T obj) {
 	}
 	
 	//returns item at parameter's index
@@ -48,19 +48,19 @@ public class DSEListGeneric implements ListGeneric {
 	}
 
 	//add the parameter item at of the end of the list
-	public boolean add(Object obj) {
+	public boolean add(T obj) {
 	}
 
 	//add item at parameter's index
-	public boolean add(int index, Object obj) {
+	public boolean add(int index, T obj) {
 	}
 
 	//searches list for parameter's String return true if found
-	public boolean contains(Object obj) {
+	public boolean contains(T obj) {
 	}
 
 	//removes the parameter's item form the list
-	public boolean remove(Object obj) {
+	public boolean remove(T obj) {
 	}
 	
 	@Override
@@ -69,7 +69,7 @@ public class DSEListGeneric implements ListGeneric {
 	}
 
 	@Override
-	public boolean equals(Object other) {
+	public boolean equals(T other) {
 		return true;
 	}
 	
