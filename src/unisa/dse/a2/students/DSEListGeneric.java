@@ -8,8 +8,8 @@ import unisa.dse.a2.interfaces.ListGeneric;
  */
 public class DSEListGeneric<T> implements ListGeneric {
 	
-	public NodeGeneric head;
-	private NodeGeneric tail;
+	public NodeGeneric<T> head;
+	private NodeGeneric<T> tail;
 
 	public DSEListGeneric() {
 		
@@ -22,7 +22,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//remove and return the item at the parameter's index
-	public T remove(int index) {
+	public void remove(int index) {
 
 	}
 
@@ -31,7 +31,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 	
 	//returns item at parameter's index
-	public void get(int index) {
+	public T get(int index) {
 	}
 
 	//checks if there is a list
@@ -69,7 +69,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	@Override
-	public boolean equals(T other) {
+	public boolean equals(Object other) {
 		return true;
 	}
 	
