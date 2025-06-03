@@ -10,15 +10,35 @@ public class DSEListGeneric<T> implements ListGeneric {
 	
 	public NodeGeneric<T> head;
 	private NodeGeneric<T> tail;
-
-	public DSEListGeneric() {
-		
+	int size = 0;
+	public DSEListGeneric() 
+	{
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
 	}
-	public DSEListGeneric(NodeGeneric head_) {
+	public DSEListGeneric(NodeGeneric<T> head_) 
+	{
+		this.head = head_;
+		this.tail = head_;
+		this.size= 1;
+		
+		head_.next = null;
+		head_.prev = null;	
 	}
 	
 	//Takes a list then adds each element into a new list
-	public DSEListGeneric(DSEList other) { // Copy constructor. 
+	public DSEListGeneric(DSEListGeneric<T> other) 
+	{ // Copy constructor. 
+		NodeGeneric<T> current = other.head;
+		 
+		while(current != null)
+		{
+			T current_data = current.getData();
+			
+			this.add(current_data);
+			current = current.next;
+		}
 	}
 
 	//remove and return the item at the parameter's index
