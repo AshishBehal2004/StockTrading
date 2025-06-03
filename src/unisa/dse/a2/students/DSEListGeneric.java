@@ -42,36 +42,58 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//remove and return the item at the parameter's index
-	public void remove(int index) {
+//	public void remove(int index) {
+//
+//	}
+//
+//	//returns the index of the String parameter 
+//	public int indexOf(T obj) {
+//	}
+//	
+//	//returns item at parameter's index
+	public T get(int index) 
+	{
+		NodeGeneric<T> current = head;
+		T nodeData = null ;
+		int nodeTrack = 0;
 
+		if (index < 0 || index >= size)
+		{
+			return null;
+		}
+		else
+		{
+			while (current != null)
+			{
+				if (nodeTrack == index)
+				{
+					nodeData = current.get();
+				}
+				current = current.next;
+				nodeTrack++;
+			}
+			return (T) nodeData;
+		}
 	}
-
-	//returns the index of the String parameter 
-	public int indexOf(T obj) {
-	}
-	
-	//returns item at parameter's index
-	public T get(int index) {
-	}
-
-	//checks if there is a list
-	public boolean isEmpty() {
-	}
-
-	//return the size of the list
-	public int size() {
-	}
-	
-	//Take each element of the list a writes them to a string 
-	@Override
-	public String toString() {
-	}
+//
+//	//checks if there is a list
+//	public boolean isEmpty() {
+//	}
+//
+//	//return the size of the list
+//	public int size() {
+//	}
+//	
+//	//Take each element of the list a writes them to a string 
+//	@Override
+//	public String toString() {
+//	}
 
 	//add the parameter item at of the end of the list
 	@Override
 	public boolean add(Object obj) {
-		T tobj = (T) obj;
-		NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, tobj);
+		T changeType = (T) obj;
+		NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, changeType);
 		if (head == null)
 		{
 			head = newNode;
@@ -88,16 +110,64 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//add item at parameter's index
-	public boolean add(int index, T obj) {
+	@Override
+	public boolean add(int index, Object obj) {
+		T changeType = (T) obj;
+		if (index < 0 || index > size)
+		{
+			return false;			
+		}
+		else if (index == 0)
+		{
+			
+			NodeGeneric<T> newNode = new NodeGeneric<T>(head, null, changeType);
+			head.prev = newNode;
+			head = newNode;
+		}
+		else if (index == size)
+		{
+			NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, changeType);
+			
+			tail.next = newNode;
+			newNode.prev = tail;
+			tail = newNode;
+		}
+		else
+		{
+			NodeGeneric<T> current = head;
+			for (int i = 0;i < index;i++)
+			{
+				current = current.next;
+			}
+			NodeGeneric<T> newNode = new NodeGeneric<T>(current,current.prev,changeType);				
+			current.prev.next = newNode;
+			current.prev = newNode;
+		}
+		size++;
+		return true;
 	}
 
 	//searches list for parameter's String return true if found
-	public boolean contains(T obj) {
+	@Override
+	public boolean contains(Object obj) 
+	{
+		T changeType = (T) obj;
+		NodeGeneric<T> current = head;
+		while(current != null)
+		{
+			if (current.get().equals(obj))
+			{
+				return true;
+			}
+			current = current.next;
+			
+		}
+		return false;
 	}
 
 	//removes the parameter's item form the list
-	public boolean remove(T obj) {
-	}
+//	public boolean remove(T obj) {
+//	}
 	
 	@Override
 	public int hashCode() {
@@ -113,7 +183,10 @@ public class DSEListGeneric<T> implements ListGeneric {
 		DSEListGeneric<String> demolist1 = new DSEListGeneric<>();
 		
 		boolean check = demolist1.add("Ashish");
+		boolean check2 = demolist1.add(1,"behal");
 		System.out.println(check);
+		System.out.println(check2);
+		System.out.println(demolist1.toString());
 	}
 	
 }

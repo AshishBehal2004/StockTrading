@@ -115,7 +115,7 @@ public class DSEList implements List {
 
 		if (index < 0 || index >= size)
 		{
-			return "cannot found the string";
+			return null;
 		}
 		else
 		{
