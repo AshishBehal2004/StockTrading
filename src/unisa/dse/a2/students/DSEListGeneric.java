@@ -1,6 +1,6 @@
 package unisa.dse.a2.students;
-
 import unisa.dse.a2.interfaces.ListGeneric;
+import unisa.dse.a2.students.NodeGeneric;
 
 /**
  * @author simont
@@ -34,7 +34,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 		 
 		while(current != null)
 		{
-			T current_data = current.getData();
+			T current_data = current.get();
 			
 			this.add(current_data);
 			current = current.next;
