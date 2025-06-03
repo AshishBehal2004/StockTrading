@@ -68,7 +68,23 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//add the parameter item at of the end of the list
-	public boolean add(T obj) {
+	@Override
+	public boolean add(Object obj) {
+		T tobj = (T) obj;
+		NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, tobj);
+		if (head == null)
+		{
+			head = newNode;
+			tail = newNode;
+		}
+		else 
+		{
+			tail.next = newNode;
+			newNode.prev = tail;
+			tail = newNode;
+		}
+		size++;
+		return true;
 	}
 
 	//add item at parameter's index
@@ -91,6 +107,13 @@ public class DSEListGeneric<T> implements ListGeneric {
 	@Override
 	public boolean equals(Object other) {
 		return true;
+	}
+	
+	public static void main(String[] args) {
+		DSEListGeneric<String> demolist1 = new DSEListGeneric<>();
+		
+		boolean check = demolist1.add("Ashish");
+		System.out.println(check);
 	}
 	
 }
