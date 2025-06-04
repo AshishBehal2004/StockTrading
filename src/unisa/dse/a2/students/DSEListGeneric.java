@@ -77,20 +77,24 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 //
 //	//checks if there is a list
-//	public boolean isEmpty() {
+	@Override
+	public boolean isEmpty() 
+	{
+		
+	}
 //	}
 //
 //	//return the size of the list
-//	public int size() {
-//	}
-//	
+	public int size() {
+	}
+	
 //	//Take each element of the list a writes them to a string 
-//	@Override
-//	public String toString() {
-//	}
+	@Override
+	public String toString() {
+	}
 
 	//add the parameter item at of the end of the list
-	@Override
+//	@Override
 	public boolean add(Object obj) {
 		T changeType = (T) obj;
 		NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, changeType);
@@ -110,7 +114,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//add item at parameter's index
-	@Override
+//	@Override
 	public boolean add(int index, Object obj) {
 		T changeType = (T) obj;
 		if (index < 0 || index > size)
@@ -166,8 +170,38 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//removes the parameter's item form the list
-//	public boolean remove(T obj) {
-//	}
+	@Override
+	public boolean remove(String obj)
+	{
+		T changetType = (T) obj;
+		NodeGeneric<T> current = head;
+		while(current != null)
+		{
+			if (current.get().equals(obj))
+			{
+				if (current == head)
+				{
+					head = current.next;
+					current.prev = null;
+				}
+				if (current == tail)
+				{
+					tail = current.prev;
+					tail.next = null;
+					
+				}
+				if (current != head && current != tail)
+				{
+					current.prev.next = current.next;
+					current.next.prev = current.prev;
+					
+				}
+				size--;
+			}
+			current = current.next;
+		}
+		return true;
+	}
 	
 	@Override
 	public int hashCode() {
