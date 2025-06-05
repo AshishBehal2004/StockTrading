@@ -25,19 +25,19 @@ public class ListedCompany {
 		this.currentPrice = currentPrice;
 	}
 	
-	public void getName() 
+	public String getName() 
 	{
-		
+		return name;
 	}
 	
-	public void getCode() 
+	public String getCode() 
 	{
-		
+		return code;
 	}
-	
 
-	
-	public void getCurrentPrice() {
+	public int getCurrentPrice() 
+	{
+		return currentPrice;
 	}
 	
 	
@@ -51,5 +51,25 @@ public class ListedCompany {
 	 */
 	public void processTrade(int quantity)
 	{
+		
+//		currentPrice  += quantity/100;
+		if (quantity > 0)
+		{
+			currentPrice  += quantity/100;
+		}
+		else if (quantity < 0)
+		{
+			int newPrice = currentPrice + (quantity / 100);
+			if (newPrice >=1)
+			{
+				currentPrice = newPrice;
+			}
+		}
+	}
+	public static void main(String[] args) {
+		ListedCompany cmp1 = new ListedCompany("456","CC Industries",60);
+		System.out.println(cmp1.getCurrentPrice());
+		cmp1.processTrade(-200);
+		System.out.println(cmp1.getCurrentPrice());
 	}
 }
