@@ -7,28 +7,39 @@ public class ListedCompany {
 	 */
 	private String name;
 	
-	public void getName() {
-	}
 
 	/**
 	 * The listing code of the company
 	 */
 	private String code;
 	
-	public void getCode() {
-	}
-
 	/**
 	 * Current price of the company after last trade
 	 */
 	private int currentPrice;
 	
+	public ListedCompany(String code, String name, int currentPrice)
+	{
+		this.code = code;
+		this.name = name;
+		this.currentPrice = currentPrice;
+	}
+	
+	public void getName() 
+	{
+		
+	}
+	
+	public void getCode() 
+	{
+		
+	}
+	
+
+	
 	public void getCurrentPrice() {
 	}
 	
-	public ListedCompany(String code, String name, int currentPrice)
-	{
-	}
 	
 	/**
 	 * Processing a trade should increase the current price of the company by 

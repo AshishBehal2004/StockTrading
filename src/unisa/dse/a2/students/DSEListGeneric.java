@@ -1,6 +1,6 @@
 package unisa.dse.a2.students;
 import unisa.dse.a2.interfaces.ListGeneric;
-import unisa.dse.a2.students.NodeGeneric;
+
 
 /**
  * @author simont
@@ -42,14 +42,66 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//remove and return the item at the parameter's index
-//	public void remove(int index) {
-//
-//	}
+	@Override
+	public T remove(int index) 
+	{
+		NodeGeneric<T> current = head;
+		int nodeTrack = 0;
+		T remove_string = null ;
+		while(current != null)
+		{
+			if (index < 0 || index >= size)
+			{
+				return null;			
+			}
+			else if (index == nodeTrack)
+			{
+				remove_string = current.get();
+				if (current == head)
+				{
+					head = current.next;
+					head.prev = null;	
+				}
+				
+				
+				else if (index == size -1 )
+				{
+					tail = tail.prev;
+					tail.next = null;
+				}
+				else 
+				{
+					current.prev.next = current.next;
+					current.next.prev = current.prev;
+				}
+				size--;
+				return (T) remove_string;
+			}
+			current = current.next;
+			nodeTrack++;
+		}
+		return remove_string;
+	}
 //
 //	//returns the index of the String parameter 
-//	public int indexOf(T obj) {
-//	}
-//	
+	@Override
+	public int indexOf(Object obj) 
+	{
+		NodeGeneric<T> current = head;
+		int nodeTrack = 0;
+		while (current != null)
+		{
+			
+			if (current.get().equals(obj))
+			{
+				return nodeTrack;
+			}
+			nodeTrack++;
+			current = current.next;
+		}
+		return -1;
+	}
+
 //	//returns item at parameter's index
 	public T get(int index) 
 	{
@@ -72,7 +124,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 				current = current.next;
 				nodeTrack++;
 			}
-			return (T) nodeData;
+			return nodeData;
 		}
 	}
 //
@@ -80,21 +132,50 @@ public class DSEListGeneric<T> implements ListGeneric {
 	@Override
 	public boolean isEmpty() 
 	{
-		
+		NodeGeneric<T> current = head;
+		if (current == null)
+		{
+			return true;
+		}
+		return false;
 	}
 //	}
 //
 //	//return the size of the list
-	public int size() {
+	public int size() 
+	{
+		int count = 0;
+		NodeGeneric<T> current = head;
+		
+		while(current != null)
+		{
+			count++;
+			current =current.next;
+		}
+		return count;
 	}
 	
 //	//Take each element of the list a writes them to a string 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
+		NodeGeneric<T> current = head;
+		String result = "";
+		while (current !=  null)
+		{
+			result += current.get();
+			if (current.next != null)
+			{
+				result += " ";
+			}
+			current = current.next;
+		}
+		return result;
+		
 	}
 
 	//add the parameter item at of the end of the list
-//	@Override
+	@Override
 	public boolean add(Object obj) {
 		T changeType = (T) obj;
 		NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, changeType);
@@ -114,10 +195,10 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//add item at parameter's index
-//	@Override
+	@Override
 	public boolean add(int index, Object obj) {
 		T changeType = (T) obj;
-		if (index < 0 || index > size)
+		if (index < 0 || index >= size)
 		{
 			return false;			
 		}
@@ -171,9 +252,8 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//removes the parameter's item form the list
 	@Override
-	public boolean remove(String obj)
+	public boolean remove(Object obj)
 	{
-		T changetType = (T) obj;
 		NodeGeneric<T> current = head;
 		while(current != null)
 		{
@@ -218,9 +298,15 @@ public class DSEListGeneric<T> implements ListGeneric {
 		
 		boolean check = demolist1.add("Ashish");
 		boolean check2 = demolist1.add(1,"behal");
-		System.out.println(check);
-		System.out.println(check2);
-		System.out.println(demolist1.toString());
+//		System.out.println(check);
+//		System.out.println(check2);
+//		System.out.println(demolist1.toString());
+		System.out.println("before "+ demolist1);
+//		demolist1.remove(1);
+//		System.out.println(demolist1.indexOf("behal"));
+//		System.out.println(demolist1.isEmpty());
+//		System.out.println(demolist1.remove(3));
+//		System.out.println("after " +demolist1);
 	}
 	
 }
