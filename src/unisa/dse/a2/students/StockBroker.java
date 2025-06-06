@@ -34,18 +34,18 @@ public class StockBroker {
 	public boolean addWatchlist(String companyCode)
 	{
 		int listSize = watchList.size();
+		if (companyCode == null)
+		{
+			return false;
+		}
 		for (int i = 0; i < listSize; i++)
 		{
 			if (watchList.get(i).equals(companyCode))
 			{
 				return false;
 			}
-			else if (companyCode == null)
-			{
-				return false;
-			}
-			
 		}
+		
 		watchList.add(companyCode);	
 		return true;
 		
@@ -58,14 +58,10 @@ public class StockBroker {
 	 * @return
 	 */
 	
-	public StockBroker()
-	{
-		this.name = name;
-		
-	}
+
 	public String getName() 
 	{
-		
+		return name;
 	}
 	
 	/**
@@ -74,6 +70,7 @@ public class StockBroker {
 	 */
 	public StockBroker(String name)
 	{
+		this.name = name;
 	}
 	
 	/**
