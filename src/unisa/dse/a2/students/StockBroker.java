@@ -78,27 +78,39 @@ public class StockBroker {
 	 * @param companyCode
 	 * @return true if added
 	 */
-//	public boolean placeOrder(Trade order)
-//	{
-//		
-//	}
-//	
-//	/**
-//	 * Gets, removes, and returns the next trade to process
-//	 * @return Trade to process
-//	 */
-//	public Trade getNextTrade()
-//	{
-//		
-//	}
-//	
-//	/**
-//	 * @return Number of pending trades
-//	 */
-//	public int getPendingTradeCount()
-//	{
-//		
-//	}
+	public boolean placeOrder(Trade order)
+	{
+		if (order.equals(null))
+		{
+			return false;
+		}
+		else if (pendingTrades.contains(order))
+		{
+			return false;
+		}
+		else 
+		{
+			pendingTrades.add(order);
+			return true;
+		}
+	}
+	
+	/**
+	 * Gets, removes, and returns the next trade to process
+	 * @return Trade to process
+	 */
+	public Trade getNextTrade()
+	{
+		
+	}
+	
+	/**
+	 * @return Number of pending trades
+	 */
+	public int getPendingTradeCount()
+	{
+		
+	}
 
 	/**
 	 * Do not modify this equals, it is used for testing purposes
@@ -128,10 +140,10 @@ public class StockBroker {
 		String companycode1 = "ashish2004";
 		String companycode2 = "ashish2004";
 		
-//		System.out.println(watchList1.add(companycode1));
+		System.out.println(watchList1.add(companycode1));
 		System.out.println(broker1.addWatchlist(companycode1));
 		System.out.println(broker1.addWatchlist(companycode2));
-
+		
 		
 	}
 }
