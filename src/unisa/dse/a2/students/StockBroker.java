@@ -31,7 +31,7 @@ public class StockBroker {
 	 * @param companyCode
 	 * @return true if added
 	 */
-	public boolean addWatchlist(String companyCode)
+	public  boolean addWatchlist(String companyCode)
 	{
 		int listSize = watchList.size();
 		if (companyCode == null)
@@ -78,27 +78,27 @@ public class StockBroker {
 	 * @param companyCode
 	 * @return true if added
 	 */
-	public boolean placeOrder(Trade order)
-	{
-		
-	}
-	
-	/**
-	 * Gets, removes, and returns the next trade to process
-	 * @return Trade to process
-	 */
-	public Trade getNextTrade()
-	{
-		
-	}
-	
-	/**
-	 * @return Number of pending trades
-	 */
-	public int getPendingTradeCount()
-	{
-		
-	}
+//	public boolean placeOrder(Trade order)
+//	{
+//		
+//	}
+//	
+//	/**
+//	 * Gets, removes, and returns the next trade to process
+//	 * @return Trade to process
+//	 */
+//	public Trade getNextTrade()
+//	{
+//		
+//	}
+//	
+//	/**
+//	 * @return Number of pending trades
+//	 */
+//	public int getPendingTradeCount()
+//	{
+//		
+//	}
 
 	/**
 	 * Do not modify this equals, it is used for testing purposes
@@ -121,4 +121,17 @@ public class StockBroker {
 		return true;
 	}
 	
+	public static void main(String[] args) {
+		StockBroker broker1 = new StockBroker("Ashish");
+		DSEListGeneric watchList1 = new DSEListGeneric<>();
+		
+		String companycode1 = "ashish2004";
+		String companycode2 = "ashish2004";
+		
+//		System.out.println(watchList1.add(companycode1));
+		System.out.println(broker1.addWatchlist(companycode1));
+		System.out.println(broker1.addWatchlist(companycode2));
+
+		
+	}
 }
