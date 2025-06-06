@@ -80,7 +80,7 @@ public class StockBroker {
 	 */
 	public boolean placeOrder(Trade order)
 	{
-		if (order.equals(null))
+		if (order == null)
 		{
 			return false;
 		}
@@ -135,14 +135,15 @@ public class StockBroker {
 	
 	public static void main(String[] args) {
 		StockBroker broker1 = new StockBroker("Ashish");
-		DSEListGeneric watchList1 = new DSEListGeneric<>();
-		
-		String companycode1 = "ashish2004";
-		String companycode2 = "ashish2004";
-		
-		System.out.println(watchList1.add(companycode1));
-		System.out.println(broker1.addWatchlist(companycode1));
-		System.out.println(broker1.addWatchlist(companycode2));
+//		DSEListGeneric watchList1 = new DSEListGeneric<>();
+//		
+//		String companycode1 = "ashish2004";
+//		String companycode2 = "ashish2004";
+		PriorityQueue pendingTrade1 = new PriorityQueue<>();
+		System.out.println(broker1.placeOrder(null));
+//		System.out.println(watchList1.add(companycode1));
+//		System.out.println(broker1.addWatchlist(companycode1));
+//		System.out.println(broker1.addWatchlist(companycode2));
 		
 		
 	}
