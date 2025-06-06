@@ -4,6 +4,8 @@ import java.util.PriorityQueue;
 
 public class StockBroker {
 
+	
+	
 	/**
 	 * List of pending trades to be completed. Must store a generic type.
 	 */
@@ -19,7 +21,8 @@ public class StockBroker {
 	 * should NOT change the list stored by this broker
 	 * @return
 	 */
-	public DSEListGeneric<String> getWatchlist() {
+	public DSEListGeneric<String> getWatchlist() 
+	{
 		return new DSEListGeneric<String>(watchList);
 	}
 	
@@ -30,6 +33,22 @@ public class StockBroker {
 	 */
 	public boolean addWatchlist(String companyCode)
 	{
+		int listSize = watchList.size();
+		for (int i = 0; i < listSize; i++)
+		{
+			if (watchList.get(i).equals(companyCode))
+			{
+				return false;
+			}
+			else if (companyCode == null)
+			{
+				return false;
+			}
+			
+		}
+		watchList.add(companyCode);	
+		return true;
+		
 	}
 	
 	private String name;
@@ -38,7 +57,15 @@ public class StockBroker {
 	 * Name of the stock brokerage firm
 	 * @return
 	 */
-	public String getName() {
+	
+	public StockBroker()
+	{
+		this.name = name;
+		
+	}
+	public String getName() 
+	{
+		
 	}
 	
 	/**
@@ -56,6 +83,7 @@ public class StockBroker {
 	 */
 	public boolean placeOrder(Trade order)
 	{
+		
 	}
 	
 	/**
@@ -64,6 +92,7 @@ public class StockBroker {
 	 */
 	public Trade getNextTrade()
 	{
+		
 	}
 	
 	/**
@@ -71,13 +100,15 @@ public class StockBroker {
 	 */
 	public int getPendingTradeCount()
 	{
+		
 	}
 
 	/**
 	 * Do not modify this equals, it is used for testing purposes
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) 
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)

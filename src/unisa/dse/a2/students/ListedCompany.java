@@ -67,9 +67,9 @@ public class ListedCompany {
 		}
 	}
 	public static void main(String[] args) {
-		ListedCompany cmp1 = new ListedCompany("456","CC Industries",60);
+		ListedCompany cmp1 = new ListedCompany("456","CC Industries",5);
 		System.out.println(cmp1.getCurrentPrice());
-		cmp1.processTrade(-200);
+		cmp1.processTrade(-300);
 		System.out.println(cmp1.getCurrentPrice());
 	}
 }
