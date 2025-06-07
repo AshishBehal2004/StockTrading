@@ -101,15 +101,17 @@ public class StockBroker {
 	 */
 	public Trade getNextTrade()
 	{
+		pendingTrades
 		
 	}
 	
-	/**
+	/**Cg
 	 * @return Number of pending trades
 	 */
 	public int getPendingTradeCount()
 	{
-		
+		int pendingQueueSize = pendingTrades.size();
+		return pendingQueueSize;
 	}
 
 	/**
