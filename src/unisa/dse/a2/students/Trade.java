@@ -84,13 +84,15 @@ public class Trade implements Comparable<Trade> {
 	 */
 	public int compareTo(Trade t)
 	{
-		DSEListGeneric<String> list1 = broker.getWatchlist();
+		DSEListGeneric<String> list2 = t.broker.getWatchlist();
+		DSEListGeneric<String> list1 = this.broker.getWatchlist();
 		list1.contains(listedCompanyCode);
-		if (this.listedCompanyCode.equals(listedCompanyCode))
+//		this.broker;
+		
+		if (list1.contains(t.listedCompanyCode) && list2.contains(this.listedCompanyCode))
 		{
-			
+			return 0;
 		}
-		if (list1.contains(listedCompanyCode) && )
 	}
 	
 
