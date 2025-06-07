@@ -12,8 +12,9 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return Track the moment in time this Trade was created
 	 */
-	public void getCreated()
+	public long getCreated()
 	{
+		return created;
 	}
 	
 	public String listedCompanyCode;
@@ -21,15 +22,20 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The company's code
 	 */
-	public void getCompanyCode() {
+	public String getCompanyCode() 
+	{
+		return listedCompanyCode;
 	}
 	
 	private int shareQuantity;
 
 	/**
+	 * @return 
 	 * @return The quantity of shares to trade
 	 */
-	public void getShareQuantity() {
+	public int getShareQuantity() 
+	{
+		return shareQuantity;
 	}
 
 	private StockBroker broker;
@@ -37,8 +43,11 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The broker associated with this trade
 	 */
-	public void getStockBroker() {
+	public StockBroker getStockBroker() 
+	{
+		return broker;
 	}
+	
 
 
 	/***
@@ -103,7 +112,18 @@ public class Trade implements Comparable<Trade> {
 		}
 		else 
 		{
-			
+			if (this.created < t.created)
+			{
+				return -1;
+			}
+			else if (this.created == t.created)
+			{
+				return 0;
+			}
+			else 
+			{
+				return 1;
+			}
 		}
 	}
 	
@@ -133,4 +153,16 @@ public class Trade implements Comparable<Trade> {
 		return true;
 	}
 	
+	public static void main(String[] args) {
+		StockBroker broker1 = new StockBroker("ashish");
+		String companycodefortrade1 = "ash";
+		String companycodefortrade2 = "beh";
+		
+		StockBroker broker2 = new StockBroker("behal");
+		Trade trade1 = new Trade(broker1,4);
+		Trade trade2 = new Trade(broker2, 5);
+		System.out.println(trade1.getCompanyCode());
+//		System.out.println(trade1.compareTo(trade2)); 
+		
+	}
 }
