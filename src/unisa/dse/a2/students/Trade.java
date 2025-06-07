@@ -61,6 +61,9 @@ public class Trade implements Comparable<Trade> {
 	 */
 	public Trade(StockBroker broker, String listedCompanyCode, int shareQuantity)
 	{
+		this.broker = broker;
+		this.listedCompanyCode = listedCompanyCode;
+		this.shareQuantity = shareQuantity;
 		created = System.nanoTime(); //do not change this
 		tradeId = System.nanoTime(); //do not change this
 		try { Thread.sleep(100); } catch (Exception x) {}
@@ -81,6 +84,13 @@ public class Trade implements Comparable<Trade> {
 	 */
 	public int compareTo(Trade t)
 	{
+		DSEListGeneric<String> list1 = broker.getWatchlist();
+		list1.contains(listedCompanyCode);
+		if (this.listedCompanyCode.equals(listedCompanyCode))
+		{
+			
+		}
+		if (list1.contains(listedCompanyCode) && )
 	}
 	
 
