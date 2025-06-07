@@ -93,6 +93,10 @@ public class Trade implements Comparable<Trade> {
 		{
 			return 0;
 		}
+		if (list1.contains(t.listedCompanyCode) && !list2.contains(this.listedCompanyCode))
+		{
+			return 1;
+		}
 	}
 	
 
