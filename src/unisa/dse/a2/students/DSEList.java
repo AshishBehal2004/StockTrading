@@ -33,6 +33,7 @@ public class DSEList implements List {
 	//Takes a list then adds each element into a new list
 	public DSEList(DSEList other) 
 	{ 
+		this();
 		Node current = other.head;
 		 
 		while(current != null)

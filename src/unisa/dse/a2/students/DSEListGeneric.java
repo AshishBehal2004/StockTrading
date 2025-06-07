@@ -30,6 +30,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 	//Takes a list then adds each element into a new list
 	public DSEListGeneric(DSEListGeneric<T> other) 
 	{ // Copy constructor. 
+		this();
 		NodeGeneric<T> current = other.head;
 		 
 		while(current != null)
