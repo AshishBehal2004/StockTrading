@@ -6,7 +6,7 @@ import unisa.dse.a2.interfaces.ListGeneric;
  * @author simont
  *
  */
-public class DSEListGeneric<T> implements ListGeneric {
+public class DSEListGeneric<T> implements ListGeneric<T> {
 	
 	public NodeGeneric<T> head;
 	private NodeGeneric<T> tail;
@@ -33,12 +33,17 @@ public class DSEListGeneric<T> implements ListGeneric {
 		this();
 		NodeGeneric<T> current = other.head;
 		 
-		while(current != null)
+//		while(current != null)
+//		{
+//			T current_data = current.get();
+//			
+//			this.add(current_data);
+//			current = current.next;
+//		}
+		for (int i=0;i < other.size();i++)
 		{
-			T current_data = current.get();
-			
-			this.add(current_data);
-			current = current.next;
+			T listItem = other.get(i);
+			this.add(listItem);
 		}
 	}
 
@@ -145,15 +150,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 //	//return the size of the list
 	public int size() 
 	{
-		int count = 0;
-		NodeGeneric<T> current = head;
-		
-		while(current != null)
-		{
-			count++;
-			current =current.next;
-		}
-		return count;
+		return size;
 	}
 	
 //	//Take each element of the list a writes them to a string 
@@ -268,9 +265,8 @@ public class DSEListGeneric<T> implements ListGeneric {
 				if (current == tail)
 				{
 					tail = current.prev;
-					tail.next = null;
-					
 				}
+				
 				if (current != head && current != tail)
 				{
 					current.prev.next = current.next;
@@ -296,18 +292,15 @@ public class DSEListGeneric<T> implements ListGeneric {
 	
 	public static void main(String[] args) {
 		DSEListGeneric<String> demolist1 = new DSEListGeneric<>();
+		DSEListGeneric<String> demolist2 = new DSEListGeneric<>();
 		
-		boolean check = demolist1.add("Ashish");
-		boolean check2 = demolist1.add(1,"behal");
-//		System.out.println(check);
-//		System.out.println(check2);
-//		System.out.println(demolist1.toString());
-		System.out.println("before "+ demolist1);
-//		demolist1.remove(1);
-//		System.out.println(demolist1.indexOf("behal"));
-//		System.out.println(demolist1.isEmpty());
-//		System.out.println(demolist1.remove(3));
-//		System.out.println("after " +demolist1);
+		demolist1.add("Ashish");
+		demolist2.add("Ashish");
+		demolist1.remove("Ashish");
+		System.out.println("Original" + demolist1);
+		System.out.println("copy" + demolist2);
+//		boolean check2 = demolist1.add(1,"behal");
+		
 	}
 	
 }

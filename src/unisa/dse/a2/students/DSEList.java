@@ -36,14 +36,20 @@ public class DSEList implements List {
 		this();
 		Node current = other.head;
 		 
-		while(current != null)
+//		while(current != null)
+//		{
+//			String current_data = current.getString();
+//			
+//			this.add(current_data);
+//			current = current.next;
+//		}
+
+		for (int i=0;i < other.size();i++)
 		{
-			String current_data = current.getString();
-			
-			this.add(current_data);
-			current = current.next;
+			String listItem = other.get(i);
+			this.add(listItem);
 		}
-		
+			
 	}
 
 	//remove the String at the parameter's index
@@ -148,15 +154,7 @@ public class DSEList implements List {
 	//return the size of the list
 	public int size() 
 	{
-		int count = 0;
-		Node current = head;
-		
-		while(current != null)
-		{
-			count++;
-			current =current.next;
-		}
-		return count;
+		return size;
 		
 	}
 	
@@ -271,8 +269,6 @@ public class DSEList implements List {
 				if (current == tail)
 				{
 					tail = current.prev;
-					tail.next = null;
-					
 				}
 				if (current != head && current != tail)
 				{
