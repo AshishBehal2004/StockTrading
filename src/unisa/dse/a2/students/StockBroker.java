@@ -101,7 +101,8 @@ public class StockBroker {
 	 */
 	public Trade getNextTrade()
 	{
-		pendingTrades
+		Trade nextPendingTrade = pendingTrades.poll();
+		return nextPendingTrade;
 		
 	}
 	
