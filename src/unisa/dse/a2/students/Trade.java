@@ -22,6 +22,7 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The company's code
 	 */
+	/*getter fpr getCOmpanycode */ 
 	public String getCompanyCode() 
 	{
 		return listedCompanyCode;
@@ -33,6 +34,7 @@ public class Trade implements Comparable<Trade> {
 	 * @return 
 	 * @return The quantity of shares to trade
 	 */
+	/* another getter */ 
 	public int getShareQuantity() 
 	{
 		return shareQuantity;
@@ -43,6 +45,7 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The broker associated with this trade
 	 */
+	/* yet another getter */
 	public StockBroker getStockBroker() 
 	{
 		return broker;
@@ -69,10 +72,12 @@ public class Trade implements Comparable<Trade> {
 	 * @param shareQuantity
 	 */
 	public Trade(StockBroker broker, String listedCompanyCode, int shareQuantity)
-	{
+	{    /*initialised broker, listedCompanyCode and shareQuantity here*/
 		this.broker = broker;
 		this.listedCompanyCode = listedCompanyCode;
 		this.shareQuantity = shareQuantity;
+		
+		
 		created = System.nanoTime(); //do not change this
 		tradeId = System.nanoTime(); //do not change this
 		try { Thread.sleep(100); } catch (Exception x) {}

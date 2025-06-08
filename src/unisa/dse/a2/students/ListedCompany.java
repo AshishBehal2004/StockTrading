@@ -49,10 +49,11 @@ public class ListedCompany {
 	 * @param quantity
 	 * @return the price after adjustment
 	 */
+	/*using quantity to check if its greather than 0, divide the quantity by 100 and onto currentprice
+	 * else if less than do the following math on line 62, and if newPrice is greater than equal to 1 change the
+	 * current price to newPrice*/
 	public void processTrade(int quantity)
 	{
-		
-//		currentPrice  += quantity/100;
 		if (quantity > 0)
 		{
 			currentPrice  += quantity/100;

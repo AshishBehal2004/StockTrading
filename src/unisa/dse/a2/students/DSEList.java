@@ -33,18 +33,13 @@ public class DSEList implements List {
 	}
 	
 	//Takes a list then adds each element into a new list
+	/*troublesome deep copy constructor,use this()(which calls default constructor to intialise a list first
+	 * which will be used below.), makes the pointer pointing to head node, looping through the nodes using size() method,
+	 * getting the string adding that onto the node using this.add(following...) */ 
 	public DSEList(DSEList other) 
 	{ 
 		this();
 		Node current = other.head;
-		 
-//		while(current != null)
-//		{
-//			String current_data = current.getString();
-//			
-//			this.add(current_data);
-//			current = current.next;
-//		}
 
 		for (int i=0;i < other.size();i++)
 		{
