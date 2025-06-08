@@ -11,12 +11,17 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	public NodeGeneric<T> head;
 	private NodeGeneric<T> tail;
 	int size = 0;
+	
+	/*default constructor for make a setting up a list  */
 	public DSEListGeneric() 
 	{
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
 	}
+	
+	/*parameterised copy constructor, that sets uses parameter head_ to intialise head and tail, and size to 1
+	 * sets head next node to null and head prev to null */
 	public DSEListGeneric(NodeGeneric<T> head_) 
 	{
 		this.head = head_;
@@ -28,18 +33,13 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	}
 	
 	//Takes a list then adds each element into a new list
+	/*troublesome deep copy constructor,use this()(which calls default constructor to intialise a list first
+	 * which will be used below.), makes the pointer pointing to head node, looping through the nodes using size() method,
+	 * getting the string adding that onto the node using this.add(following...) */ 
 	public DSEListGeneric(DSEListGeneric<T> other) 
 	{ // Copy constructor. 
 		this();
 		NodeGeneric<T> current = other.head;
-		 
-//		while(current != null)
-//		{
-//			T current_data = current.get();
-//			
-//			this.add(current_data);
-//			current = current.next;
-//		}
 		for (int i=0;i < other.size();i++)
 		{
 			T listItem = other.get(i);
@@ -48,6 +48,11 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	}
 
 	//remove and return the item at the parameter's index
+	//remove the String at the parameter's index
+	/*similar logic to its brother(remmove(obj)), the difference being: checking for valid index first,
+	 * the nest else if checks if index matches the nodeTrack, if yes the get the current nodeString, and checking 
+	 * if it is head, point the current next to head, and head previous to null, if its tail, point tail previous to tail, tail next to null
+	 * else in middle part(same explaination as remove(objj middle deletion.  */
 	@Override
 	public T remove(int index) 
 	{
@@ -91,6 +96,9 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 //
 //	//returns the index of the String parameter 
 	@Override
+	/*returns index of the obj, made the pointer first pointing to head,nodeTrack for tracking nodes,
+	 * traversing through the list, and checking if current pointer matcher obj(passed as parameter)
+	 * if yes then return the index nodeTrack. otherwise keep traversing and increasing nodeTrack. */ 
 	public int indexOf(Object obj) 
 	{
 		NodeGeneric<T> current = head;
@@ -102,13 +110,17 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 			{
 				return nodeTrack;
 			}
-			nodeTrack++;
 			current = current.next;
+			nodeTrack++;
 		}
 		return -1;
 	}
 
 //	//returns item at parameter's index
+	/*initialising three variable of node, string and in t type which are further used below.
+	 * handling the invalid case if invalid index(meaning less than 0 and more than actual size)
+	 * traversing through each node, checking if the nodeTrack matches the indes, if yes then get's it stringand return it
+	 * increment the nodeTrack */
 	public T get(int index) 
 	{
 		NodeGeneric<T> current = head;
@@ -155,6 +167,10 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	
 //	//Take each element of the list a writes them to a string 
 	@Override
+	
+	/* responsible for returning the string, making pointer of T datatype points to head.
+	 * traversing through each node in the list and getting each node string by get() and storing in 
+	 * result with space, and returning it*/
 	public String toString() 
 	{
 		NodeGeneric<T> current = head;
@@ -174,6 +190,10 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 
 	//add the parameter item at of the end of the list
 	@Override
+	//add the parameter String at of the end of the list
+	/*does the job of adding by first making new node, checking if head node(meaning empty list) is null, if yes 
+	 * then make head and tail the newNode. else add the node at the end of list  by linking the current node to tail node
+	 * and newnode previous to the tail node, and changing the tail to newNode */
 	public boolean add(Object obj) {
 		T changeType = (T) obj;
 		NodeGeneric<T> newNode = new NodeGeneric<T>(null, tail, changeType);
@@ -194,6 +214,11 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 
 	//add item at parameter's index
 	@Override
+	/*similar logic to removal, handling three case: adding to head, tail and in middle.
+	 * and also checking the invalid case of adding, change the head prev to newNode and actual head to newNode if inserting on the 0 element, 
+	 * change the tail previous to newNode and the newNode previous pointer to tail, chaning tail with newNode if inserting on the tail.
+	 * else part takes the middle inserting scenario where first looping through nodes, making newNode,
+	 * and changing the curent previous next pointer to newnode and current prev pointer to newNOde. */
 	public boolean add(int index, Object obj) {
 		T changeType = (T) obj;
 		if (index < 0 || index >= size)

@@ -12,7 +12,7 @@ public class DSEList implements List {
 	private Node tail;
 	int size = 0;
 	
-	
+	/*default constructor for make a setting up a list  */
 	public DSEList() 
 	{
 		this.head = null;
@@ -20,6 +20,8 @@ public class DSEList implements List {
 		this.size = 0;
 	}
 	
+	/*parameterised copy constructor, that sets uses parameter head_ to intialise head and tail, and size to 1
+	 * sets head next node to null and head prev to null */
 	public DSEList(Node head_) 
 	{
 		this.head = head_;
@@ -53,6 +55,10 @@ public class DSEList implements List {
 	}
 
 	//remove the String at the parameter's index
+	/*similar logic to its brother(remmove(obj)), the difference being: checking for valid index first,
+	 * the nest else if checks if index matches the nodeTrack, if yes the get the current nodeString, and checking 
+	 * if it is head, point the current next to head, and head previous to null, if its tail, point tail previous to tail, tail next to null
+	 * else in middle part(same explaination as remove(objj middle deletion.  */
 	public String remove(int index) 
 	{
 		Node current = head;
@@ -94,11 +100,14 @@ public class DSEList implements List {
 	}
 
 	//returns the index of the String parameter 
+	/*returns index of the String parameter, made the pointer first pointing to head,nodeTrack for tracking nodes,
+	 * traversing through the list, and checking if current pointer matcher obj(passed as parameter)
+	 * if yes then return the index nodeTrack. otherwise keep traversing and increasing nodeTrack. */ 
 	public int indexOf(String obj) 
 	{
 		Node current = head;
 		int nodeTrack = 0;
-		String node_string = "";
+		String node_string ;
 		while (current != null)
 		{
 			node_string = current.getString();
@@ -106,14 +115,18 @@ public class DSEList implements List {
 			{
 				return nodeTrack;
 			}
-			nodeTrack++;
 			current = current.next;
+			nodeTrack++;
 		}
 		return -1;
 		
 	}
 	
 	//returns String at parameter's index
+	/*initialising three variable of node, string and in t type which are further used below.
+	 * handling the invalid case if invalid index(meaning less than 0 and more than actual size)
+	 * traversing through each node, checking if the nodeTrack matches the indes, if yes then get's it stringand return it
+	 * increment the nodeTrack */
 	public String get(int index) 
 	{
 		Node current = head;
@@ -131,12 +144,13 @@ public class DSEList implements List {
 				if (nodeTrack == index)
 				{
 					nodeData = current.getString();
+					return nodeData;
 				}
 				current = current.next;
 				nodeTrack++;
 			}
-			return nodeData;
 		}
+		return null;
 		
 	}
 
@@ -159,7 +173,9 @@ public class DSEList implements List {
 	}
 	
 	//Take each element of the list a writes them to a string 
-	
+	/* responsible for returning the string, making pointer of String datatype points to head.
+	 * traversing through each node in the list and getting each node string by getString() and storing in 
+	 * result with space, and returning it*/
 	@Override
 	public String toString() 
 	{
@@ -179,6 +195,9 @@ public class DSEList implements List {
 	}
 
 	//add the parameter String at of the end of the list
+	/*does the job of adding by first making new node, checking if head node(meaning empty list) is null, if yes 
+	 * then make head and tail the newNode. else add the node at the end of list  by linking the current node to tail node
+	 * and newnode previous to the tail node, and changing the tail to newNode */
 	public boolean add(String obj) 
 	{
 		Node newNode = new Node(null, tail, obj);
@@ -199,6 +218,11 @@ public class DSEList implements List {
 	}
 
 	//add String at parameter's index
+	/*similar logic to removal, handling three case: adding to head, tail and in middle.
+	 * and also checking the invalid case of adding, change the head prev to newNode and actual head to newNode if inserting on the 0 element, 
+	 * change the tail previous to newNode and the newNode previous pointer to tail, chaning tail with newNode if inserting on the tail.
+	 * else part takes the middle inserting scenario where first looping through nodes, making newNode,
+	 * and changing the curent previous next pointer to newnode and current prev pointer to newNOde. */
 	public boolean add(int index, String obj) 
 	{
 		if (index < 0 || index > size)
