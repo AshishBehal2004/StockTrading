@@ -257,6 +257,11 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 		{
 			if (current.get().equals(obj))
 			{
+				if (current == head && current == tail)
+				{
+					head = null;
+					tail = null;
+				}
 				if (current == head)
 				{
 					head = current.next;
@@ -274,10 +279,11 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 					
 				}
 				size--;
+				return true;
 			}
 			current = current.next;
 		}
-		return true;
+		return false;
 	}
 	
 	@Override

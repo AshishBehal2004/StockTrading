@@ -100,12 +100,15 @@ public class SecuritiesExchange {
 		{
 			StockBroker broker = brokers.get(i);
 			Trade trade = broker.getNextTrade();
-			
+			int quantity = trade.getShareQuantity();
 			if (trade != null)
 			{
 				String companyCode = trade.getCompanyCode();
 				if (companies.containsKey(companyCode))
 				{
+					ListedCompany company = companies.get(companyCode);
+					company.getCurrentPrice();
+					company.processTrade(quantity);
 					
 				}
 			}
@@ -113,7 +116,7 @@ public class SecuritiesExchange {
 	}
 	
 	
-	/*Takes input s(which is a user input) made int variable that will be used for counting the total rounds.
+	/*Takes input sc(which is a user input) made int variable that will be used for counting the total rounds.
 	 * and the checkInput (responisble for seeing what the user is typing) and then comparing it in further stage
 	 * the while loops as long as user does not enter exit, it first check what the user types, compare that in if(to see if he/she typed trade)
 	 * if yes then call the processTradeRound() method here and increase the int rounds vriable, at last return that rounds variable*/
