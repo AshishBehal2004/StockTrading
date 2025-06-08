@@ -37,6 +37,10 @@ public class SecuritiesExchange {
 	 */
 	public SecuritiesExchange(String name)
 	{
+		this.name = name;
+		this.brokers = new DSEListGeneric<>();;
+		this.announcements = new DSEListGeneric<>();
+		this.companies = new HashMap<>();
 	}
 	
 	/**
@@ -44,16 +48,34 @@ public class SecuritiesExchange {
 	 * @param company
 	 * @return true if the company was added, false if it was not
 	 */
+	/* The way in which this method works it retrieves the companies(which is hashmap of string type that also takees listed company class i made as anotherargument or parameter.
+	 * then checks using if that, does the company exists in the companies list, if yes then return false , otherwise adds that company(actually the company code) since its a key value 
+	 * thing in hashmap and the company itself in it.then returns true, */
 	public boolean addCompany(ListedCompany company)
 	{
+		if (companies.containsKey(company.getCode()))
+		{
+			return false;
+		}
+		companies.put(company.getCode(), company);
+		return true;
 	}
 
 	/**
 	 * Adds the given broke to the list of brokers on the exchange
 	 * @param company
 	 */
+	
+	/* Using if to check the condition if the broker(passed as parameter) already exist), if yes then return true
+	 * otherwise just add that inside the brokers(which is a lgeneric list of stockbroker type and return true*/
 	public boolean addBroker(StockBroker broker)
 	{
+		if (brokers.contains(broker))
+		{
+			return false;			
+		}
+		brokers.add(broker);
+		return true;
 	}
 	
 	/**
@@ -74,10 +96,40 @@ public class SecuritiesExchange {
 	 */
 	public int processTradeRound()
 	{
+		for (int i =0;i < brokers.size(); i++)
+		{
+			StockBroker broker = brokers.get(i);
+			Trade trade = broker.getNextTrade();
+			
+			if (trade != null)
+			{
+				String companyCode = trade.getCompanyCode();
+				if (companies.containsKey(companyCode))
+				{
+					
+				}
+			}
+		}
 	}
 	
+	
+	/*Takes input s(which is a user input) made int variable that will be used for counting the total rounds.
+	 * and the checkInput (responisble for seeing what the user is typing) and then comparing it in further stage
+	 * the while loops as long as user does not enter exit, it first check what the user types, compare that in if(to see if he/she typed trade)
+	 * if yes then call the processTradeRound() method here and increase the int rounds vriable, at last return that rounds variable*/
 	public int runCommandLineExchange(Scanner sc)
 	{
+		int totalRounds = 0;
+		String checkInput = sc.nextLine();
 		
+		while(!checkInput.equals("exit"))
+		{
+			checkInput = sc.nextLine();
+			if (checkInput.equals("trade")) {
+				processTradeRound();
+				totalRounds++;
+			}
+		}
+		return totalRounds;
 	}
 }
