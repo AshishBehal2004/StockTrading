@@ -119,20 +119,20 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 		{
 			return null;
 		}
-		else
-		{
+
 			while (current != null)
 			{
 				if (nodeTrack == index)
 				{
 					nodeData = current.get();
+					return nodeData;
 				}
 				current = current.next;
 				nodeTrack++;
 			}
-			return nodeData;
-		}
+			return null;	
 	}
+
 //
 //	//checks if there is a list
 	@Override
@@ -249,6 +249,14 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	}
 
 	//removes the parameter's item form the list
+	/*does the removal job by first making a pointer current pointing to head(since its generic it can have any data type), looping through as long as head is not null
+	 * then checks if the head node is equal to obj (parameter object) if yes then another check:if there is only node in list,
+	 * then set those head and tail to null exit the loop, decrement size and return true, then elseif checks if it is only head node and if head is not null(if yes then set its previous node to null,
+	 *  point the current next to head.
+	 * another elseif its tail(meaning node at last) point the current's previous to tail and check if tail is not null same as before if yes then but this time set its next node to null since its last node.
+	 * then else part,  the node is in middle, points middle node next to its previous next, and middle node
+	 * previous to its previous next(meaning change the pointers to the current), decrease the size and return true
+	 * travers through the node, otherwise return false  */
 	@Override
 	public boolean remove(Object obj)
 	{
@@ -261,18 +269,27 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 				{
 					head = null;
 					tail = null;
+					size--;
+					return true;
 				}
-				if (current == head)
+				else if (current == head)
 				{
 					head = current.next;
-					current.prev = null;
+					if (head != null)
+					{
+						head.prev = null;
+					}
 				}
-				if (current == tail)
+				else if (current == tail)
 				{
 					tail = current.prev;
-				}
-				
-				if (current != head && current != tail)
+					if (tail != null) 
+					{
+						tail.next = null;
+					}
+				}	
+				else
+//					(current != head && current != tail)
 				{
 					current.prev.next = current.next;
 					current.next.prev = current.prev;

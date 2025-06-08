@@ -254,6 +254,14 @@ public class DSEList implements List {
 	}
 
 	//removes the parameter's String form the list
+	
+	//removes the parameter's item form the list
+	/*does the removal job by first making a pointer current pointing to head, looping through as long as head is not null
+	 * then checks if the head node is equal to obj (parameter object) if yes then another check:if there is only node in list,
+	 * then set those head and tail to null, then second if checks if it is only head node, point the current next to head and its previous to null.
+	 * if its tail(meaning node at last) point the current's previous to tail, then last if the node is in middle points middle node next to its previous next, and middle node
+	 * previous to its previous next(meaning change the pointers to the current), decrease the size and return true
+	 * travers through the node, otherwise return false  */
 	public boolean remove(String obj) 
 	{
 		Node current = head;
@@ -261,16 +269,30 @@ public class DSEList implements List {
 		{
 			if (current.getString().equals(obj))
 			{
-				if (current == head)
+				if (current == head && current == tail)
+				{
+					head = null;
+					tail = null;
+					size--;
+					return true;
+				}
+				else if (current == head)
 				{
 					head = current.next;
-					current.prev = null;
+					if (head != null)
+					{
+						head.prev = null;
+					}
 				}
-				if (current == tail)
+				else if (current == tail)
 				{
+					if (tail != null) 
+					{
+						tail.next = null;
+					}
 					tail = current.prev;
 				}
-				if (current != head && current != tail)
+				else
 				{
 					current.prev.next = current.next;
 					current.next.prev = current.prev;
